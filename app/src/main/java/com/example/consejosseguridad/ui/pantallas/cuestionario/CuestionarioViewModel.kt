@@ -24,7 +24,8 @@ class CuestionarioViewModel : ViewModel() {
     fun responder(indiceRespuesta: Int) {
         if (indiceRespuesta == preguntaActual.respuestaCorrecta) {
             puntaje++
-        } if
+        }
+        if
                   (indicePreguntaActual < preguntas.lastIndex) {
             indicePreguntaActual++
         } else {
