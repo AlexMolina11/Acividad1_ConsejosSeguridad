@@ -11,12 +11,16 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.consejosseguridad.R
 import com.example.consejosseguridad.ui.componentes.BotonPrincipal
 import com.example.consejosseguridad.ui.componentes.OpcionCuestionario
 
-/* Pantalla que muestra un cuestionario básico de seguridad web.*/
+/**
+ * Pantalla que muestra un cuestionario básico de seguridad web.
+ */
 @Composable
 fun PantallaCuestionario(
     onVolver: () -> Unit,
@@ -31,48 +35,54 @@ fun PantallaCuestionario(
                 .padding(20.dp),
             verticalArrangement = Arrangement.Center
         ) {
-
             if (viewModel.cuestionarioFinalizado) {
-
                 Text(
-                    text = "Cuestionario finalizado",
-                    style = MaterialTheme.typography.headlineMedium
+                    text = stringResource(id = R.string.cuestionario_finalizado),
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = MaterialTheme.colorScheme.primary
                 )
 
                 Spacer(modifier = Modifier.height(12.dp))
 
                 Text(
-                    text = "Puntaje: ${viewModel.puntaje} de ${viewModel.preguntas.size}",
+                    text = stringResource(
+                        id = R.string.texto_puntaje,
+                        viewModel.puntaje,
+                        viewModel.preguntas.size
+                    ),
                     style = MaterialTheme.typography.bodyLarge
                 )
 
                 Spacer(modifier = Modifier.height(24.dp))
 
                 BotonPrincipal(
-                    texto = "Reiniciar",
+                    texto = stringResource(id = R.string.boton_reiniciar),
                     onClick = { viewModel.reiniciar() }
                 )
 
                 Spacer(modifier = Modifier.height(12.dp))
 
                 BotonPrincipal(
-                    texto = "Volver al inicio",
+                    texto = stringResource(id = R.string.boton_volver_inicio),
                     onClick = onVolver
                 )
-
             } else {
-
                 val pregunta = viewModel.preguntaActual
 
                 if (pregunta == null) {
                     Text(
-                        text = "Cargando preguntas...",
+                        text = stringResource(id = R.string.cargando_preguntas),
                         style = MaterialTheme.typography.bodyLarge
                     )
                 } else {
                     Text(
-                        text = "Pregunta ${viewModel.indicePreguntaActual + 1} de ${viewModel.preguntas.size}",
-                        style = MaterialTheme.typography.titleMedium
+                        text = stringResource(
+                            id = R.string.texto_pregunta_contador,
+                            viewModel.indicePreguntaActual + 1,
+                            viewModel.preguntas.size
+                        ),
+                        style = MaterialTheme.typography.titleMedium,
+                        color = MaterialTheme.colorScheme.primary
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))

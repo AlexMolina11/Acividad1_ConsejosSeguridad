@@ -11,14 +11,17 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.consejosseguridad.R
 import com.example.consejosseguridad.ui.componentes.BotonPrincipal
 
-import androidx.compose.runtime.LaunchedEffect
-
-/* Pantalla que muestra el detalle completo de un tema de seguridad.*/
+/**
+ * Pantalla que muestra el detalle completo de un tema de seguridad.
+ */
 @Composable
 fun PantallaDetalle(
     temaId: Int,
@@ -39,37 +42,40 @@ fun PantallaDetalle(
                 .padding(padding)
                 .padding(20.dp)
         ) {
-
             if (tema == null) {
                 Text(
-                    text = "Tema no encontrado",
+                    text = stringResource(id = R.string.tema_no_encontrado),
                     style = MaterialTheme.typography.headlineSmall
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 BotonPrincipal(
-                    texto = "Volver",
+                    texto = stringResource(id = R.string.boton_volver),
                     onClick = onVolver
                 )
             } else {
-
                 Text(
                     text = tema.titulo,
-                    style = MaterialTheme.typography.headlineMedium
+                    style = MaterialTheme.typography.headlineMedium,
+                    color = MaterialTheme.colorScheme.primary
                 )
 
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surface
+                    ),
                     elevation = CardDefaults.cardElevation(4.dp)
                 ) {
                     Column(
                         modifier = Modifier.padding(16.dp)
                     ) {
                         Text(
-                            text = "Descripción",
-                            style = MaterialTheme.typography.titleMedium
+                            text = stringResource(id = R.string.titulo_descripcion),
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.primary
                         )
 
                         Spacer(modifier = Modifier.height(8.dp))
@@ -84,14 +90,18 @@ fun PantallaDetalle(
                 Spacer(modifier = Modifier.height(16.dp))
 
                 Card(
+                    colors = CardDefaults.cardColors(
+                        containerColor = MaterialTheme.colorScheme.surface
+                    ),
                     elevation = CardDefaults.cardElevation(4.dp)
                 ) {
                     Column(
                         modifier = Modifier.padding(16.dp)
                     ) {
                         Text(
-                            text = "Recomendación",
-                            style = MaterialTheme.typography.titleMedium
+                            text = stringResource(id = R.string.titulo_recomendacion),
+                            style = MaterialTheme.typography.titleMedium,
+                            color = MaterialTheme.colorScheme.primary
                         )
 
                         Spacer(modifier = Modifier.height(8.dp))
@@ -106,7 +116,7 @@ fun PantallaDetalle(
                 Spacer(modifier = Modifier.height(24.dp))
 
                 BotonPrincipal(
-                    texto = "Volver",
+                    texto = stringResource(id = R.string.boton_volver),
                     onClick = onVolver
                 )
             }

@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">ConsejosSeguridad</string>
+    <string name="app_name">Consejos de Seguridad</string>
+
+    <string name="titulo_inicio">Consejos de Seguridad</string>
+    <string name="descripcion_inicio">Aprende seguridad web fácilmente</string>
+    <string name="boton_cuestionario">Iniciar cuestionario</string>
+
+    <string name="titulo_descripcion">Descripción</string>
+    <string name="titulo_recomendacion">Recomendación</string>
+    <string name="tema_no_encontrado">Tema no encontrado</string>
+    <string name="boton_volver">Volver</string>
+
+    <string name="cuestionario_finalizado">Cuestionario finalizado</string>
+    <string name="boton_reiniciar">Reiniciar</string>
+    <string name="boton_volver_inicio">Volver al inicio</string>
+    <string name="cargando_preguntas">Cargando preguntas...</string>
+    <string name="texto_puntaje">Puntaje: %1$d de %2$d</string>
+    <string name="texto_pregunta_contador">Pregunta %1$d de %2$d</string>
+
+    <string name="descripcion_icono_seguridad">Ícono de seguridad</string>
 </resources>
