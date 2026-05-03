@@ -12,7 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 
-/** Tarjeta reutilizable para mostrar un tema. */
+/* Tarjeta reutilizable para mostrar un tema. */
 @Composable
 fun TarjetaTema(
     titulo: String,

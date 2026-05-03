@@ -23,51 +23,77 @@ fun PantallaCuestionario(
     viewModel: CuestionarioViewModel = viewModel()
 ) {
     Scaffold { padding ->
+
         Column(
-            verticalArrangement = Arrangement.Center,
             modifier = Modifier
                 .fillMaxSize()
                 .padding(padding)
                 .padding(20.dp),
+            verticalArrangement = Arrangement.Center
         ) {
+
             if (viewModel.cuestionarioFinalizado) {
+
                 Text(
                     text = "Cuestionario finalizado",
                     style = MaterialTheme.typography.headlineMedium
                 )
+
                 Spacer(modifier = Modifier.height(12.dp))
+
                 Text(
                     text = "Puntaje: ${viewModel.puntaje} de ${viewModel.preguntas.size}",
                     style = MaterialTheme.typography.bodyLarge
                 )
+
                 Spacer(modifier = Modifier.height(24.dp))
+
                 BotonPrincipal(
                     texto = "Reiniciar",
                     onClick = { viewModel.reiniciar() }
                 )
+
                 Spacer(modifier = Modifier.height(12.dp))
+
                 BotonPrincipal(
                     texto = "Volver al inicio",
                     onClick = onVolver
                 )
+
             } else {
+
                 val pregunta = viewModel.preguntaActual
-                Text(
-                    text = "Pregunta ${viewModel.indicePreguntaActual + 1} de ${viewModel.preguntas.size}",
-                    style = MaterialTheme.typography.titleMedium
-                )
-                Spacer(modifier = Modifier.height(16.dp))
-                Text(
-                    text = pregunta.pregunta,
-                    style = MaterialTheme.typography.headlineSmall
-                )
-                Spacer(modifier = Modifier.height(24.dp))
-                pregunta.opciones.forEachIndexed { indice, opcion ->
-                    OpcionCuestionario(
-                        texto = opcion,
-                        onClick = { viewModel.responder(indice) }
+
+                if (pregunta == null) {
+                    Text(
+                        text = "Cargando preguntas...",
+                        style = MaterialTheme.typography.bodyLarge
                     )
-                    Spacer(modifier = Modifier.height(10.dp))
+                } else {
+                    Text(
+                        text = "Pregunta ${viewModel.indicePreguntaActual + 1} de ${viewModel.preguntas.size}",
+                        style = MaterialTheme.typography.titleMedium
+                    )
+
+                    Spacer(modifier = Modifier.height(16.dp))
+
+                    Text(
+                        text = pregunta.pregunta,
+                        style = MaterialTheme.typography.headlineSmall
+                    )
+
+                    Spacer(modifier = Modifier.height(24.dp))
+
+                    pregunta.opciones.forEachIndexed { indice, opcion ->
+                        OpcionCuestionario(
+                            texto = opcion,
+                            onClick = {
+                                viewModel.responder(indice)
+                            }
+                        )
+
+                        Spacer(modifier = Modifier.height(10.dp))
+                    }
                 }
             }
         }

@@ -6,7 +6,7 @@ import androidx.activity.compose.setContent
 import com.example.consejosseguridad.ui.navegacion.NavegacionApp
 import com.example.consejosseguridad.ui.theme.ConsejosSeguridadTheme
 
-/* Punto de entrada de la aplicación.*/
+/* Punto de entrada de la aplicación. */
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
